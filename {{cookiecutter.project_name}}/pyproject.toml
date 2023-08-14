@@ -31,7 +31,7 @@ classifiers = [
 dynamic = ["version"]
 
 [project.urls]
-Homepage = "{{ coookiecutter.package_url }}"
+Homepage = "{{ cookiecutter.package_url }}"
 Source = "{{ cookiecutter.git_repository }}"
 
 [tool.setuptools_scm]
