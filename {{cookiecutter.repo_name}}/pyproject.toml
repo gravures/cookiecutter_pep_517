@@ -1,0 +1,79 @@
+#####################################################
+# Project Metadatas
+#####################################################
+[project]
+name = "{{ cookiecutter.project_name }}"
+description = "{{ cookiecutter.short_description }}"
+authors = [
+  { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
+]
+maintainers = [
+  { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
+]
+license = { text = "{{ cookiecutter.license }}" }
+readme = "README.md"
+keywords = []
+classifiers = [
+  "Development Status :: 1 - Dev",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3 :: Only",
+]
+requires-python = "{{ cookicutter.python }}"
+dependencies = []
+dynamic = ["version"]
+
+[project.urls]
+homepage = "{{ cookiecutter.github_url }}"
+source   = "{{ cookiecutter.github_url }}"
+Issues   = "{{ cookiecutter.github_url }}/issues"
+
+[project.scripts]
+
+#####################################################
+# PDM
+#####################################################
+[build-system]
+requires      = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+plugins      = []
+
+[tool.pdm.build]
+package-dir      = "src"
+editable-backend = "editables"
+
+[tool.pdm.version]
+source         = "scm"
+write_to       = "{{ cookiecutter.package_name }}/_version.py"
+write_template = "__version__ = '{}'"
+
+[tool.pdm.dev-dependencies]
+dev  = ["ruff", "basedpyright", "pre-commit", "tox-pdm", "dead"]
+test = ["pytest", "hypothesis", "coverage[toml]", "tox>=4.0"]
+
+[tool.pdm.scripts]
+xrequire    = "pdm export -f requirements -o requirements.txt"
+test        = "pytest -s -v -k {args}"
+test_all    = "coverage run -m pytest"
+test_typing = "pdm run basedpyright --stats ./src/cookiecutterz"
+test_cover  = "coverage report"
+tox_testme  = "tox --develop -r -e py"
+pc_init     = "pre-commit install"
+pc_update   = "pre-commit autoupdate"
+pc_check    = { env = { "SKIP" = "basedpyright" }, cmd = "pre-commit run --all-files" }
+dead        = "dead"
+pc_clean    = "pre-commit clean && pre-commit gc"
+deps        = "pdm list --fields name,groups,version,licenses,homepage --sort groups,name,licenses --exclude :sub"
+
+[tool.pdm.scripts.pc_safety]
+composite = ["require", "pre-commit run python-safety-dependencies-check"]
