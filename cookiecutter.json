@@ -1,12 +1,23 @@
 {
+    "project_name": "",
+    "package_name": "{{ cookiecutter.project_name|lower|replace('-', '_')|replace(' ', '_') }}",
     "author_name": "First Last",
     "author_email": "first.last@example.com",
-    "project_name": "pyproject-package",
-    "package_name": "{{ cookiecutter.project_name|lower|replace('-', '_')|replace(' ', '_') }}",
-    "package_version": "0.0.1",
+    "github_user": "{{ cookiecutter.author_name|lower|replace(' ', '_') }}",
+    "github_url": "https://github.com/{{ cookiecutter.github_user }}/{{ cookiecutter.repo_name }}",
+    "short_description": "A one line short description of the project.",
     "package_year": "{% now 'utc', '%Y' %}",
-    "package_description": "A python pep-517 compliant cookiecutter template for Python packages.",
-    "git_account": "{{ cookiecutter.author_name|lower|replace(' ', '_') }}",
-    "git_repository": "https://github.com/{{ cookiecutter.git_account }}/{{ cookiecutter.project_name }}",
-    "package_url": "https://pypi.org/project/{{ cookiecutter.project_name }}"
+    "_bases": [
+        "gh:gravures/cookiecutter_python_code"
+    ],
+    "__prompts__": {
+        "project_name": "project name",
+        "package_name": "Validate the main python package name:",
+        "author_name": "Author full name:",
+        "author_email": "Author email:",
+        "github_user": "GitHub username or organization:",
+        "github_url": "git repository url",
+        "short_description": "Short description:",
+        "package_year": "Year of the oldest source file"
+    }
 }
