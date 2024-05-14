@@ -1,23 +1,21 @@
 {
     "project_name": "",
     "package_name": "{{ cookiecutter.project_name|lower|replace('-', '_')|replace(' ', '_') }}",
-    "author_name": "First Last",
+
     "author_email": "first.last@example.com",
     "github_user": "{{ cookiecutter.author_name|lower|replace(' ', '_') }}",
     "github_url": "https://github.com/{{ cookiecutter.github_user }}/{{ cookiecutter.repo_name }}",
     "short_description": "A one line short description of the project.",
-    "package_year": "{% now 'utc', '%Y' %}",
-    "_bases": [
-        "gh:gravures/cookiecutter_python_code"
-    ],
+    "development_status": [ "Alpha", "Beta", "Stable", "Inactive" ],
+    "_bases": [ "gh:gravures/cookiecutter_python_code" ],
+    "_extensions": [ "local_extensions.TroverClassifierExtension" ],
     "__prompts__": {
         "project_name": "project name",
         "package_name": "Validate the main python package name:",
-        "author_name": "Author full name:",
         "author_email": "Author email:",
         "github_user": "GitHub username or organization:",
         "github_url": "git repository url",
         "short_description": "Short description:",
-        "package_year": "Year of the oldest source file"
+        "development_status": "development status"
     }
 }
