@@ -14,26 +14,22 @@ license = { text = "{{ cookiecutter.license }}" }
 readme = "README.md"
 keywords = []
 classifiers = [
-  "Development Status :: 1 - Dev",
-  "Intended Audience :: Developers",
-  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-  "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
+  "{{ cookiecutter.development_status | dev_status_classifier }}",
+  "{{ cookiecutter.license | licences_classifier }}",
+  "{{ cookiecutter.platforms | os_classifier }}",
+  "Programming Language :: Python :: {{ cookiecutter.python | py_vers_minimal('minor') }}",
   "Programming Language :: Python :: 3 :: Only",
+  "Typing :: Typed",
 ]
 requires-python = "{{ cookicutter.python }}"
 dependencies = []
 dynamic = ["version"]
 
 [project.urls]
-homepage = "{{ cookiecutter.github_url }}"
-source   = "{{ cookiecutter.github_url }}"
-Issues   = "{{ cookiecutter.github_url }}/issues"
+homepage      = "{{ cookiecutter.github_url }}"
+repository    = "{{ cookiecutter.github_url }}"
+documentation = "{{ cookiecutter.github_url }}"
+issues        = "{{ cookiecutter.github_url }}/issues"
 
 [project.scripts]
 
