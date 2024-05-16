@@ -12,7 +12,8 @@ from typing import Pattern
 # And, without allowing periods or underscores,
 # as reflected in packaging name normalization:
 # https://peps.python.org/pep-0503/#normalized-names.
-VALID_PACKAGE: Pattern[str] = re.compile(r"^([a-z0-9]|[a-z0-9][a-z0-9-]*[a-z0-9])$")
+VALID_PACKAGE_NAME: Pattern[str] = re.compile(r"^([a-z0-9]|[a-z0-9][a-z0-9-]*[a-z0-9])$")
+
 
 # Checks repository url, assuming it is at GitHub.
 VALID_REPO_URL: Pattern[str] = re.compile(
@@ -33,7 +34,7 @@ def validate_text(text: str, regex: Pattern[str], error_label: str) -> None:
         ValueError: if "text" does not match "regex".
     """
     if not text or regex.fullmatch(text) is None:
-        message = f"The project name {text} is not a valid {error_label}"
+        message = f"Input <{text}> is not a valid {error_label}"
         raise ValueError(message)
 
 
@@ -41,13 +42,13 @@ def main() -> None:
     """Calls validation functions."""
     validate_text(
         text="{{ cookiecutter.package_name }}",
-        regex=VALID_PACKAGE,
+        regex=VALID_PACKAGE_NAME,
         error_label="python package name",
     )
 
     validate_text(
         text="{{ cookiecutter.github_url }}",
-        regex=VALID_PACKAGE,
+        regex=VALID_PACKAGE_NAME,
         error_label="github repository url",
     )
 

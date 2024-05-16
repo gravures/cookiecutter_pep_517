@@ -1,7 +1,6 @@
 {
     "project_name": "",
-    "package_name": "{{ cookiecutter.project_name|lower|replace('-', '_')|replace(' ', '_') }}",
-
+    "package_name": "{{ cookiecutter.project_name|lower|replace('_', '-')|replace(' ', '-')|replace('.', '-') }}",
     "author_email": "first.last@example.com",
     "github_user": "{{ cookiecutter.author_name|lower|replace(' ', '_') }}",
     "github_url": "https://github.com/{{ cookiecutter.github_user }}/{{ cookiecutter.repo_name }}",
