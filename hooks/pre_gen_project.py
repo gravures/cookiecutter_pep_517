@@ -17,7 +17,7 @@ VALID_PACKAGE_NAME: Pattern[str] = re.compile(r"^([a-z0-9]|[a-z0-9][a-z0-9-]*[a-
 
 # Checks repository url, assuming it is at GitHub.
 VALID_REPO_URL: Pattern[str] = re.compile(
-    r"https:\/\/github\.com\/[A-Za-z0-9]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]"
+    r"^https:\/\/github\.com\/[A-Za-z0-9]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]"
     r"\/[A-Za-z0-9_]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]\/?$"
 )
 
@@ -48,7 +48,7 @@ def main() -> None:
 
     validate_text(
         text="{{ cookiecutter.github_url }}",
-        regex=VALID_PACKAGE_NAME,
+        regex=VALID_REPO_URL,
         error_label="github repository url",
     )
 
