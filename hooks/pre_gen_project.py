@@ -5,6 +5,13 @@ from __future__ import annotations
 import re
 from typing import Pattern
 
+# A valid name consists only of ASCII letters 
+# and numbers, period, underscore and hyphen. 
+# It must start and end with a letter or number.
+# https://packaging.python.org/en/latest/specifications/name-normalization/ 
+VALID_PROJECT_NAME: Pattern[str] = re.compile(
+    r"^([A-Z0-9]|[A-Z0-9][A-Z0-9._-]*[A-Z0-9])$", re.IGNORECASE
+)
 
 # Package names must be lower-case letters,
 # numbers, or dashes, but not start with a dash.
@@ -40,6 +47,12 @@ def validate_text(text: str, regex: Pattern[str], error_label: str) -> None:
 
 def main() -> None:
     """Calls validation functions."""
+    validate_text(
+        text="{{ cookiecutter.project_name }}",
+        regex=VALID_PROJECT_NAME,
+        error_label="project name",
+    )
+    
     validate_text(
         text="{{ cookiecutter.package_name }}",
         regex=VALID_PACKAGE_NAME,
