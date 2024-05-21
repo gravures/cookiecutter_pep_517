@@ -58,13 +58,14 @@ dev  = ["ruff", "basedpyright", "pre-commit", "tox-pdm", "dead"]
 test = ["pytest", "hypothesis", "coverage[toml]", "tox>=4.0"]
 
 [tool.pdm.scripts]
+traceback   = "_traceback.py"
 xrequire    = "pdm export -f requirements -o requirements.txt"
 test        = "pytest -s -v -k {args}"
 test_all    = "coverage run -m pytest"
 test_typing = "pdm run basedpyright --stats ./src/cookiecutterz"
 test_cover  = "coverage report"
 tox_testme  = "tox --develop -r -e py"
-pc_init     = "pre-commit install"
+pc_init     = "pre-commit install --install-hooks"
 pc_update   = "pre-commit autoupdate"
 pc_check    = { env = { "SKIP" = "basedpyright" }, cmd = "pre-commit run --all-files" }
 dead        = "dead"
