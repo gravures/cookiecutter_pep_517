@@ -31,9 +31,9 @@ OS = {
     "Win": "Operating System :: Microsoft :: Windows",
     "OSX": "Operating System :: MacOS :: MacOS X",
     "Linux": "Operating System :: POSIX :: Linux",
-    "Win/OSX": ("Operating System :: Microsoft :: Windows\nOperating System :: MacOS :: MacOS X"),
-    "Win/Linux": ("Operating System :: Microsoft :: Windows\nOperating System :: POSIX :: Linux"),
-    "OSX/Linux": ("Operating System :: MacOS :: MacOS X\nOperating System :: POSIX :: Linux"),
+    "Win/OSX": ("Operating System :: Microsoft :: Windows\"\n  \"Operating System :: MacOS :: MacOS X"),
+    "Win/Linux": ("Operating System :: Microsoft :: Windows\"\n  \"Operating System :: POSIX :: Linux"),
+    "OSX/Linux": ("Operating System :: MacOS :: MacOS X\"\n  \"Operating System :: POSIX :: Linux"),
 }
 
 
