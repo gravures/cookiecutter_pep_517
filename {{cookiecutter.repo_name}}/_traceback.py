@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python  # noqa: CPY001
 """Install python traceback formatter in the current virtualenv."""
 
 from __future__ import annotations
